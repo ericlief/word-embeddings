@@ -128,13 +128,13 @@ def project():
 
 
 def load(): # Load whole gensim wv model
-    #model = Word2Vec.load('word2vec_cs')
-    model = Word2Vec.load_word2vec_format('word2vec_cs_bin', binary=True)
-    model.save_word2vec_format('word2vec_cs.txt', binary=False)	
+    model = Word2Vec.load('word2vec_cs')
+    #model = Word2Vec.load_word2vec_format('word2vec_cs', binary=True)
+    model.save_word2vec_format('word2vec_cs.bin', binary=True)	
     #model = Word2Vec.load_word2vec_format('word2vec_cs_bin', binary=False)
-    wv = model.wv.syn0
-    vocab = model.wv.vocab
-    index_to_word = model.wv.index2word
+    #wv = model.wv.syn0
+    #vocab = model.wv.vocab
+    #ndex_to_word = model.wv.index2word
     # This loads only the wv matrix --> (?, dim)
     #we = np.load('word2vec_cs.wv.syn0.npy')
     #print(we.shape) # -> (667123, 400)Word2VecWord2Vec
@@ -143,8 +143,8 @@ def load(): # Load whole gensim wv model
     #print(we.wv.syn0.shape)
     
     #print(len(we.wv.vocab)) # -> (667123, 400)
-    print(vocab['na'])
-    print(index_to_word[0])
+    #print(vocab['na'])
+    #print(index_to_word[0])
     
     #we = we.wv.syn0
     #print(we[0,:])
@@ -153,14 +153,15 @@ def load(): # Load whole gensim wv model
     #np.save(embeddings_file, matrix)
     #text = '\n'.join(words)
 
-#load()
+
+load()
 
 
-print('opening file')
-with open('word2vec_cs.txt', 'r+') as f:
-    #print(f)
-    for line in f:
-        print(line)
+#print('opening file')
+#with open('word2vec_cs.txt', 'r+') as f:
+    ##print(f)
+    #for line in f:
+        #print(line)
     
     
     #f.write(text.encode('utf-8'))

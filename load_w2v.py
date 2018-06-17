@@ -65,7 +65,7 @@ if __name__ == "__main__":
     from tensorflow.contrib import learn
     import morpho_dataset
     
-    train = morpho_dataset.MorphoDataset("test.txt", lowercase=True)
+    train = morpho_dataset.MorphoDataset("/home/liefe/data/cs/test.txt", lowercase=True)
     
     # To read as text
     #file = 'word2vec_cs.txt'
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     #print(word_to_index['odkazy'])
     
     # Read bin file
-    file = 'word2vec_cs_bin'
+    file = 'word2vec_cs.bin'
     we = load(file)
     print(we.shape)
     #print(index_to_word[14])
