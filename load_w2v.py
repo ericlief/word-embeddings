@@ -75,12 +75,16 @@ if __name__ == "__main__":
     #print(word_to_index['odkazy'])
     
     # Read bin file
-    file = 'word2vec_cs.bin'
-    we = load(file)
-    print(we.shape)
-    #print(index_to_word[14])
-    idx = train.factors[train.FORMS].words_map.get('odkazy')
-    print('odkazy: {}, we={}'.format(idx, we[idx,:])) 
+    with open('wv_we', 'wb') as f:
+        file = 'word2vec_cs.bin'
+        we = load(file)
+        print(we.shape)
+        #print(index_to_word[14])
+        idx = train.factors[train.FORMS].words_map.get('odkazy')
+        print('odkazy: {}, we={}'.format(idx, we[idx,:])) 
+        np.save(we, f)
+        
+        
     
 
     
