@@ -26,12 +26,14 @@ if __name__ == '__main__':
     inp, outp = sys.argv[1:3]
 
     # Train model with dim=400
-    model = Word2Vec(LineSentence(inp), size=400, window=5, min_count=5, workers=multiprocessing.cpu_count())
+    model = Word2Vec(LineSentence(inp), size=64, window=5, min_count=5, workers=multiprocessing.cpu_count())
 
     # trim unneeded model memory = use (much) less RAM
     model.init_sims(replace=True)
 
     model.save(outp)
+    model.wv.save_word2vec_format(outp + '.bin', binary=True)
+    
     # Deprecated
     #outp2 = outp + '_bin'
     #model.save_word2vec_format(outp2, binary=True)
