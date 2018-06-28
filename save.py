@@ -131,8 +131,9 @@ def project():
 def load_save(file): # Load whole gensim wv model
     model = Word2Vec.load(file)
     # Save text
-    model.save_word2vec_format(file+'.txt', binary=False)	
-    
+    #model.save_word2vec_format(file+'.txt', binary=False)	
+    # Deprecated in newer gensim vers
+    model.wv.save_word2vec_format(file+'.txt', binary=False)	
     
     #model = Word2Vec.load_word2vec_format('word2vec_cs', binary=True)
     #model.save_word2vec_format(file+'.bin', binary=True)	

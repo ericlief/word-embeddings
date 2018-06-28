@@ -88,7 +88,7 @@ if __name__ == "__main__":
     import morpho_dataset
     import sys
    
-    train = morpho_dataset.MorphoDataset("/home/liefe/data/cs/czech-pdt-train.txt", lowercase=True)
+    #train = morpho_dataset.MorphoDataset("/home/liefe/data/cs/czech-pdt-train.txt", lowercase=True)
     
     #train = morpho_dataset.MorphoDataset("/home/liefe/data/cs/train.txt", lowercase=True)
     #train = morpho_dataset.MorphoDataset("/afs/ms/u/l/liefe/data/cs/train.txt", lowercase=True)
@@ -101,6 +101,10 @@ if __name__ == "__main__":
     
     # Read bin file
     model_file = sys.argv[1]
+    train_file = sys.argv[2]
+    train = morpho_dataset.MorphoDataset(train_file, lowercase=True)
+            
+
     # Save file in numpy format
     #with open(model_file, 'wb') as f:
         #file = '/home/liefe/py/wv_data/word2vec_cs64.bin'
