@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#83;40601;0c!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import logging
 import os.path
@@ -20,19 +20,20 @@ if __name__ == '__main__':
 
     # check and process input arguments
 
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 4:
         #print(globals()['__doc__'] % locals())
         sys.exit(1)
-    inp, outp = sys.argv[1:3]
-
+    inp, outp, we_dim = sys.argv[1:4]
+    we_dim = int(we_dim)
     # Train model with dim=400
-    model = Word2Vec(LineSentence(inp), size=64, window=5, min_count=5, workers=multiprocessing.cpu_count())
+    model = Word2Vec(LineSentence(inp), size=we_dim, window=5, min_count=5, workers=multiprocessing.cpu_count())
 
     # trim unneeded model memory = use (much) less RAM
     model.init_sims(replace=True)
 
     model.save(outp)
-    model.wv.save_word2vec_format(outp + '.bin', binary=True)
+    # model.wv.save_word2vec_format(outp + '.bin', binary=True)
+    model.wv.save_word2vec_format(outp + '.txt', binary=False)
     
     # Deprecated
     #outp2 = outp + '_bin'

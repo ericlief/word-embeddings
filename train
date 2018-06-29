@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ulimit -t unlimited && nice -n 10 python3 train_word2vec_model.py ~/wiki/cswiki-20180320-pages-articles-multistream.xml.bz2 word2vec_cs256 256
