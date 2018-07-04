@@ -29,7 +29,7 @@ if __name__ == '__main__':
     i = 0
 
     output = open(outp, 'w')
-    wiki = WikiCorpus(inp, lemmatize=False,  dictionary={})
+    wiki = WikiCorpus(inp, lemmatize=False,  lower=False, dictionary={})
     for text in wiki.get_texts():
         if six.PY3:
             output.write(bytes(' '.join(text), 'utf-8').decode('utf-8') + '\n')

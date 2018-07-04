@@ -87,7 +87,8 @@ if __name__ == "__main__":
     from tensorflow.contrib import learn
     import morpho_dataset
     import sys
-   
+    from os.path import expanduser
+    
     #train = morpho_dataset.MorphoDataset("/home/liefe/data/cs/czech-pdt-train.txt", lowercase=True)
     
     #train = morpho_dataset.MorphoDataset("/home/liefe/data/cs/train.txt", lowercase=True)
@@ -102,6 +103,8 @@ if __name__ == "__main__":
     # Read bin file
     model_file = sys.argv[1]
     train_file = sys.argv[2]
+    home = expanduser('~')
+    train_file = home + '/data/cs/' + train_file 
     train = morpho_dataset.MorphoDataset(train_file, lowercase=True)
             
 

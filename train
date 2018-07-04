@@ -1,3 +1,7 @@
 #!/bin/bash
 
-ulimit -t unlimited && nice -n 10 python3 train_word2vec_model.py ~/wiki/cswiki-20180320-pages-articles-multistream.xml.bz2 word2vec_cs256 256
+#ulimit -t unlimited && nice -n 10 python3 train_word2vec_model.py ~/wiki/cswiki-20180320-pages-articles-multistream.xml.bz2 word2vec_cs256 256
+
+ulimit -t unlimited && nice -n 10 ./w2v -train ~/wiki/cswiki_uc.txt -output word2vec_cs_uc_400 -size 400 -window 8 -save_vocab word2vec_cs_uc_400_vocab -binary 1
+
+
