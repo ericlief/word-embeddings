@@ -46,27 +46,55 @@ def load_bin(file):
     # load any vectors from the word2vec
     print("Load word2vec file {}\n".format(file))
     with open(file, "rb") as f:
-        header = f.readline()
+        
+        # Read header [vocab_size, we_dim]
+        header = ""
+        while True:
+            c = f.read(1).decode('latin-1')
+            #print(c)
+            if c == "\n":
+                break
+            #c = f.read(1).decode('utf-8')
+            #c = f.read(1)
+            header += c
+            
+        #header = f.readline()
         vocab_size, we_dim = map(int, header.split())
         train_size = len(train.factors[train.FORMS].words)
         we = np.random.uniform(-0.25, 0.25, [train_size, we_dim])        
         #word_to_index = {}
         #binary_len = np.dtype('float32').itemsize * we_dim
+        
+        # Read word
         for line in range(vocab_size):
-            word = []
+            
+            word = ""        
             while True:
-                ch = f.read(1).decode('ascii')
-                #print(type(ch.decode('utf-8')))
-                print(ch)
-                if ch == ' ':
-                    word = ''.join(word)
-                    print('break')
+                c = f.read(1).decode('latin-1')
+                #print(c)
+                if c == " ":
                     break
-                if ch != '\n':
-                    word.append(ch)  
-                    print('new line')
-            print('here')
+                word += c
+            #print word
+            print (word)    
+            
+            
+            #word = []
+            #while True:
+                #ch = f.read(1).decode('ascii')
+                ##print(type(ch.decode('utf-8')))
+                #print(ch)
+                #if ch == ' ':
+                    #word = ''.join(word)
+                    #print('break')
+                    #break
+                #if ch != '\n':
+                    #word.append(ch)  
+                    #print('new line')
+            #print('here')
             #idx = vocab_processor.vocabulary_.get(word)
+            
+            
             idx = train.factors[train.FORMS].words_map.get(word)
             print(word, idx)
             if idx != 0: # 0 returned by get() if not in vocab

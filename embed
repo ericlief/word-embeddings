@@ -1,4 +1,5 @@
 #!/bin/bash
 
 echo 'Embedding  model with training_data'
-ulimit -t unlimited && nice -n 10 python embed_words.py word2vec_cs256.txt czech-pdt-train.txt
+#ulimit -t unlimited && nice -n 10 python embed_words.py word2vec_cs256.txt czech-pdt-train.txt
+ulimit -t unlimited && nice -n 10 python2 embed_words2.py word2vec_cs256.txt czech-pdt-train.txt
